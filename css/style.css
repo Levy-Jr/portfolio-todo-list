@@ -67,8 +67,8 @@ picture {
   --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
   --Light-Grayish-Blue: hsl(234, 39%, 85%);
   --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
-  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
-  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Dark-Grayish-Blue-dark-theme: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue-dark-theme: hsl(233, 14%, 35%);
   --primary-900: hsl(237, 14%, 26%);
 
   /* light theme */
@@ -79,7 +79,7 @@ picture {
   --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 
   --ff: 'Josefin Sans', sans-serif;
-  --fs-light: .75rem; 
+  --fs-light: .75rem;
   --fw-light: 400;
   --fw-regular: 700;
 }
@@ -113,12 +113,9 @@ body {
   margin-block: 2rem;
 }
 
-.fs-light {
-  font-size: var(--fs-light);
-}
-
 .section-wrapper {
   width: 100%;
+  position: relative;
 }
 
 button {
@@ -129,8 +126,7 @@ button {
 }
 
 .remove-button {
-  position: absolute; 
-  right: 1.25rem;
+  margin-right: 1rem;
   cursor: pointer;
   width: .875rem;
 }
@@ -140,16 +136,28 @@ button {
   border-radius: .25rem;
 }
 
+.fs-light {
+  font-size: var(--fs-light);
+}
+
 .primary-bg-color {
   background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
+.t-center {
+  text-align: center;
 }
 
 .primary-bg-color * {
   color: #fff;
 }
 
+.primary-text-color{
+  color: var(--Dark-Grayish-Blue-dark-theme);
+}
+
 .margin-block-400 {
-  margin-block: 1rem;
+  margin-block: 1.2rem;
 }
 
 .padding-block-200 {
@@ -165,7 +173,8 @@ button {
 }
 
 .a-center{
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .fw-400{
@@ -179,6 +188,12 @@ button {
 .s-b{
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+
+.line-through {
+  text-decoration: line-through;
+  opacity: .5;
 }
 
 .section-option-buttons{
@@ -187,6 +202,11 @@ button {
 }
 
 .section-option-buttons > button {
+  color: var(--Dark-Grayish-Blue-dark-theme);
+  font-weight: var(--fw-regular);
+}
+
+.section-option-buttons > button:hover{
   color: #fff;
 }
 
@@ -201,10 +221,33 @@ button {
 }
 
 .check-todo {
+  position: relative;
+  /* background-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)); */
   border-radius: 100%;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: .3rem;
-  margin-inline: 1rem .25rem;
+  padding: .6rem;
+  margin-inline: 1rem .5rem;
+}
+
+.background-image {
+  background-image: url('../images/icon-check.svg'), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+}
+
+/* .check-todo:hover {
+  border-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) 5%;
+} */
+
+.icon-check {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+}
+
+.clear-completed:hover{
+  color: #fff;
 }
 
 /* The div element is not a valid child of the ul element, you should nest the div and buttons inside the li. */
@@ -219,16 +262,33 @@ button {
 
 .todo-list > li {
   border-bottom: 1px solid var(--primary-900);
-  position: relative;
   display: flex;
+}
+
+.form {
+  display: flex;
+}
+
+.form > div {
+  border-radius: .25rem 0rem 0rem .25rem;
+}
+
+.form > div > .check-todo{
+  margin-top: .8rem;
+  margin-inline: 1rem;
 }
 
 .todo-input {
   width: 100%;
-  padding: 1.25em 2em;
+  padding: 1.25em 0em;
   border: 0;
   outline: 0;
   color: #fff;
+  border-radius: 0rem .25rem .25rem 0rem;
+}
+
+.todo-text{
+  cursor: pointer;
 }
 
 .todo-input::placeholder{

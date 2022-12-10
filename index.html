@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="fs-light">
+<body>
 
   <main class="main-container">
     <div class="title-container | s-b">
@@ -20,70 +20,42 @@
     </div>
 
     <section class="section-wrapper | br">
-        <form class="form" data-form>
-          <input type="text" class="todo-input | br primary-bg-color" data-todo-input placeholder="Create a new todo...">
-        </form>
+      <form class="form" data-form>
+        <div class="primary-bg-color">
+          <button class="check-todo" type="submit" data-form-button></button>
+        </div>
+        <input type="text" class="todo-input | primary-bg-color fs-light" data-todo-input placeholder="Create a new todo...">
+      </form>
 
       <div class="todos | margin-block-400 primary-bg-color br">
         <ul class="todo-list | primary-bg-color fs-light br" data-ul-list>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-              Complete online JavaScript course
+          <!-- <li class="padding-block-400">
+            <div class="s-b">
+              <div class="a-center">
+                <button class="check-todo" data-todo-check><img class="icon-check" src="images/icon-check.svg" alt=""></button>
+                <span class="line-through" data-todo-text>Complete online JavaScript course</span>
+              </div>
+              <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
             </div>
-            <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-              Jog aroung the park 3x
-            </div>
-            <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-               10 minutes meditation
-            </div>
-             <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-              Read for 1 hour
-            </div>
-            <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-              Pick up groceries
-            </div>
-            <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
-          <li class="padding-block-400">
-            <div>
-              <button class="check-todo" data-check-todo><img src="" alt=""></button>
-              Complete Todo App on Frontend Mentor
-            </div>
-            <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-          </li>
+          </li> -->
         </ul>
-        <div class="s-b padding-block-400 padding-inline-400">
-          <span>
-            <span data-items-left>5</span> items left
+        <div class="s-b padding-block-400 fs-light padding-inline-400">
+          <span class="primary-text-color">
+            <span class="primary-text-color" data-items-left>...</span> itens restantes
           </span>
-          <button data-button-clear-completed>Clear Completed</button>
+          <button class="clear-completed | primary-text-color" data-button-clear-completed>Limpar Completados</button>
         </div>
       </div>
 
       <section class="section-option-buttons | primary-bg-color padding-block-200 br">
-        <button data-button-all>All</button>
-        <button data-button-active>Active</button>
-        <button data-button-completed>Completed</button>
+        <button data-button-all>Todos</button>
+        <button data-button-active>Ativos</button>
+        <button data-button-completed>Completados</button>
       </section>
       
-      <span class="primary-text-color">Drag and drop to reorder list</span>
+      <div class="margin-block-400 t-center">
+        <span class="drag | primary-text-color fs-light">Drag and drop to reorder list</span>
+      </div>
 
     </section>
 
