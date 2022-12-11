@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
   <main class="main-container">
     <div class="title-container | s-b">
       <h1 class="title fw-700">TODO</h1>
-      <button data-toggle-mode><img src="images/icon-sun.svg" alt=""></button>
+      <button id="toggle-mode" class="light-mode" data-toggle-mode></button>
     </div>
 
     <section class="section-wrapper | br">
@@ -27,17 +27,8 @@
         <input type="text" class="todo-input | primary-bg-color fs-light" data-todo-input placeholder="Create a new todo...">
       </form>
 
-      <div class="todos | margin-block-400 primary-bg-color br">
+      <div class="todos | box-shadow margin-block-400 primary-bg-color br">
         <ul class="todo-list | primary-bg-color fs-light br" data-ul-list>
-          <!-- <li class="padding-block-400">
-            <div class="s-b">
-              <div class="a-center">
-                <button class="check-todo" data-todo-check><img class="icon-check" src="images/icon-check.svg" alt=""></button>
-                <span class="line-through" data-todo-text>Complete online JavaScript course</span>
-              </div>
-              <button class="remove-button" data-remove-button><img src="images/icon-cross.svg" alt=""></button>
-            </div>
-          </li> -->
         </ul>
         <div class="s-b padding-block-400 fs-light padding-inline-400">
           <span class="primary-text-color">
@@ -47,22 +38,22 @@
         </div>
       </div>
 
-      <section class="section-option-buttons | primary-bg-color padding-block-200 br">
-        <button data-button-all>Todos</button>
-        <button data-button-active>Ativos</button>
-        <button data-button-completed>Completados</button>
+      <section class="section-option-buttons | box-shadow primary-bg-color padding-block-200 br">
+        <button class="option-button" data-button-all>Todos</button>
+        <button class="option-button" data-button-active>Ativos</button>
+        <button class="option-button" data-button-completed>Completados</button>
       </section>
       
-      <div class="margin-block-400 t-center">
-        <span class="drag | primary-text-color fs-light">Drag and drop to reorder list</span>
-      </div>
+      <!-- <div class="margin-block-400 t-center">
+        <span class="drag | primary-text-color fs-light">Arraste e solte para reordenar a lista</span>
+      </div> -->
 
     </section>
 
     
   </main>
 
-  <div class="attribution">
+  <div class="attribution" style="margin-top: 1rem;">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/Levy-Jr">Levy Gomes</a>.
   </div>

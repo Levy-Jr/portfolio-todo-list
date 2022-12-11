@@ -6,6 +6,7 @@ const todoText = document.querySelector('[data-todo-text]')
 const leftItems = document.querySelector('[data-items-left]')
 
 /* buttons */
+const optionButtons = document.querySelectorAll('.option-button')
 const dataFormButton = document.querySelector('[data-form-button]')
 const buttonClearCompleted = document.querySelector('[data-button-clear-completed]')
 const buttonAll = document.querySelector('[data-button-all]')
@@ -16,12 +17,41 @@ const todoCheck = document.querySelector('[data-todo-check]')
 const getLocalStorage = () => JSON.parse(localStorage.getItem('todos')) ?? []
 const setLocalStorage = (todo) => localStorage.setItem('todos', JSON.stringify(todo))
 
+let localStorageMode
+
+const changeMode = () => {
+  if(toggleMode.classList.contains('dark-mode')){
+    document.documentElement.setAttribute('data-theme', 'light')
+    localStorage.setItem('mode', 'light')
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    localStorage.setItem('mode', 'dark')
+  }
+}
+
+const loadLocalStorageMode  = () => {
+  localStorageMode = localStorage.getItem('mode')
+  if(localStorageMode === 'light'){
+    toggleMode.classList.toggle('dark-mode')
+    document.documentElement.setAttribute('data-theme', 'light')
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark')
+  }
+}
+
+loadLocalStorageMode()
+
+toggleMode.addEventListener('click', () => {
+  toggleMode.classList.toggle('dark-mode')
+  changeMode()
+})
+
 const createTodo = (todo) => {
   let todoLayout = ''
   
   if(todo.completed){
   todoLayout += `
-  <li class="padding-block-400 completed" id="${todo.id}">
+  <li class="padding-block-400 color completed" data-todo-li id="${todo.id}">
   <div class="s-b">
     <div class="a-center">
       <button class="check-todo background-image" data-todo-check id="${todo.id}"></button>
@@ -32,7 +62,7 @@ const createTodo = (todo) => {
 </li>
   `} else {
     todoLayout += `
-    <li class="padding-block-400" id="${todo.id}">
+    <li class="padding-block-400 color" data-todo-li id="${todo.id}">
     <div class="s-b">
       <div class="a-center">
         <button class="check-todo" data-todo-check id="${todo.id}"></button>
@@ -86,7 +116,7 @@ const deleteTodo = (todoId) => {
 
 const deleteCompletedTodos = () => {
   const readLocalStorage = getLocalStorage()
-  const completedTodos = readLocalStorage.filter(todo => todo.completed != true)
+  const completedTodos = readLocalStorage.filter(todo => todo.completed == false)
 
   setLocalStorage(completedTodos)
 }
@@ -141,4 +171,51 @@ form.addEventListener('submit', e => {
     saveTodo()
     leftItems.innerHTML = getLeftItems()
   }
+})
+
+/* Activate color */
+
+const activeClickedButton = (button) => {
+  optionButtons.forEach(b => {
+    b.classList.remove('blue')
+  })
+
+  button.classList.add('blue')
+}
+
+optionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    activeClickedButton(button)
+  })
+})
+
+/* Filter todos */
+
+buttonAll.addEventListener('click', () => {
+  const allTodos = document.querySelectorAll('[data-todo-li]')
+  allTodos.forEach(todo => {
+    todo.style.display = 'block'
+  })
+})
+
+buttonActive.addEventListener('click', () => {
+  const allTodos = document.querySelectorAll('[data-todo-li]')
+  allTodos.forEach(todo => {
+    if(todo.classList.contains('completed')){
+      todo.style.display = 'none'
+    } else {
+      todo.style.display = 'block'
+    }
+  })
+})
+
+buttonCompleted.addEventListener('click', () => {
+  const allTodos = document.querySelectorAll('[data-todo-li]')
+  allTodos.forEach(todo => {
+    if(todo.classList.contains('completed')){
+      todo.style.display = 'block'
+    } else {
+      todo.style.display = 'none'
+    }
+  })
 })
